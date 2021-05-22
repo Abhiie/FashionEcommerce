@@ -1,0 +1,173 @@
+<html>
+
+    <head>
+    <style>
+		
+{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  outline: none;
+  text-decoration: none;
+  list-style: none;
+  font-family: 'Nunito', sans-serif;
+}
+
+body{
+  background: #dfdfdf;
+
+}
+
+.main{
+  display: flex;
+  max-width: 600px;/*change*/
+  width: 100%;
+  height: 360px;/*change */
+  position: absolute;
+  top: 50%;
+  left:50%;
+  transform: translate(-50%,-50%);
+}
+
+.main .left,.main .right{
+  width: 40%;
+  height: 100%;
+  padding: 30px;
+}
+
+.main .left{
+  background: #494f57;
+}
+
+.main .left h3{
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  color: #fff;
+  font-size: 20px;
+}
+
+.main .left img{
+  display: block;
+  width: 300px;
+  height:250px;
+  margin: 20px auto 0;
+}
+
+.main .right{
+  background: white;
+}
+
+.main .right .Header ul{
+  text-align: center;
+}
+
+.main .right .Header ul li{
+  display: inline-block;
+  margin: 5px;
+  padding: 5px 10px;
+  font-size: 14px;
+  color: #494f57;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+ 
+}
+
+
+.main .right .Header ul li.active{
+  border-bottom: 2px solid #494f57;
+}
+
+.main .right .register{
+  margin-top: 20px;
+}
+
+.main .right .input_field{
+  margin-bottom: 15px;
+}
+
+.main .right .input_field .input{
+  width: 100%;
+  padding: 10px 15px;
+  border: 0;
+  font-size: 12px;
+  background: #ecebeb;
+}
+
+/*.main .right .btn{
+  margin-top: 20px;
+  background: blue;
+  padding: 10px;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  font-weight: bold;*/
+
+
+
+        .button {
+  background-color:white;
+  color: black;
+  padding: 5px 20px;
+  text-align: center;
+  font-size: 16px;
+  margin:2px 2px;
+  width:100px;
+  border: 2px solid #494f57;
+}
+    </style>
+</head>
+<body>
+{% extends 'base.html' %}
+{% block content %}
+{% if form.errors %}
+<p class="error"> Invalid Username or Password </p>
+{% endif %}
+<form action="/loginmodule/auth/" method = "post">{% csrf_token %}
+
+
+    <!---->
+    <!---->
+    <!---->
+    <!---->
+    <!---->
+    <div class="main">
+		<div class="left">
+			<h3>Fashion</h3>   
+		  <img src="Fashion.png" alt="Fashion">
+		</div>
+		<div class="right">
+		  <div class="Header">
+			<ul>
+			  <li class="register_li">Login</li>
+			</ul>
+		  </div>
+		  
+		  <div class="register">
+			<div class="input_field">
+			  <input name="txt_Username" type="text" placeholder="username" class="input">
+			  
+			  
+		   </div>
+			<div class="input_field">
+			  <input type="password" placeholder="Password" name="password"  class="input" >
+
+			 
+			   <input type="checkbox" name="remember">remember me
+			</div>
+			 
+			<input type="Submit" class="button" value="Login" name="btnsubmit">
+			<input type="Submit" class="button" value="Register" name="btnsubmit"formaction="registerU.html">
+		   <a href="ForgotPassDesign.html">Forgot Password</a>
+		   
+    <!--
+<label for="username">user name : </label><br>
+<input type="text" name = "username" value = "" id="username"><br>
+<label for="password"> Password:</label><br>
+<input type="password" name="password" value="" id="password"><br>
+<input type="submit" value="login"/>
+-->
+{% endblock %}
+</form>
+</body>
+<html>
