@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/Logincss.css' %}">
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+	{% load static %}
+	<link rel="stylesheet" href="{% static static 'ok.css' %}">
+</head>
+<body>
+	<div class="container" id="container">
+		<div class="form-container log-in-container">
+			<form method="POST">
+                {%csrf_token %}
+				<h1>Login</h1>
+
+				<div class="social-container">
+					<a href="#" class="social"><i class="fa fa-facebook fa-2x"></i></a>
+					<a href="#" class="social"><i class="fab fa fa-twitter fa-2x"></i></a>
+				</div>
+				<span>or use your account</span>
+				<input type="text" placeholder="Enter your EMAIL id" name="Username"/>
+				<input type="password" placeholder="Password" name="Pwd"/>
+				<a href="#">Forgot your password?</a>
+        <button type="submit" class="btn">Log in</button>
+        <br>
+         <a href="/Registration" class="btn">Registration</a>&nbsp;&nbsp;&nbsp;
+			</form>
+		</div>
+		<div class="overlay-container">
+			<div class="overlay">
+				<div class="overlay-panel overlay-right">
+					<h1>Welcome User</h1>
+					<p>Welcome to modist Fashion ecommerce.Stay safe Stay Happie.</p>
+				</div>
+			</div>
+		</div>
+	</div>
+    {% if messages %}
+            {% for msg in messages %}
+            <b>{{msg}}</b>
+            
+            {% endfor%}
+            {% endif%}
+</body>
+</html>

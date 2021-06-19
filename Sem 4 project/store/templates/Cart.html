@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+{% extends 'base.html' %}
+
+{% block content %}
+{% load cart %}
+<div class="container">
+
+    <div class="border rounded p-4 m-4">
+        {{products}}
+        <table class="table table-inverse table-inverse table-responsive">
+            <thead class="thead-inverse">
+                <tr>
+                    <th>Sr no</th>
+                    <th>Product name</th>
+                    <th>Price</th>
+                    <th>Quantity</th>
+                    <th>TOtal</th>
+                    <th>Image</th>
+                </tr>
+                </thead>
+                <tbody>
+                    {% for product in products%}
+                    <tr>
+                        <td>{{forloop.counter}}</td>
+                        <td>{{product.name}}</td>
+                        <td>{{product.price}}</td>
+                        <td>{{product|cart_quantity:request.session.cart}}</td>
+                        <td>{{product|price_total:request.session.cart}}</td>
+                        <td><img src="{{product.image.url}}" alt="not" style="height:100px;"></td>
+                        <td></td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <th>Final bill amount</th>
+                        <th>{{products|Final_price:request.session.cart}}</th>
+                    </tr>
+                </tfoot>
+        </table>
+        <div class="m-3 p-4">
+            <a href="/AddressPage" class="btn btn-success border btn-sm" >Checkout</a>
+        </div>
+    </div>
+</div>
+{% endblock %}
